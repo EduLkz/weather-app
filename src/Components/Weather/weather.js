@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { ConvertUnixDate } from '../../Services/convertUnixDate';
 import { GetWeatherBackground } from '../../Services/getWeatherBackground';
-import { WeatherContext } from '../../weatherContext';
+import { AppContext } from '../../appContext';
+
 import './weather.scss';
 
 const Weather = () =>{
-    const { weatherData } = useContext(WeatherContext);
+    const { weatherData } = useContext(AppContext);
     const {daily, current} = weatherData;
 
     const dailyInfo = daily[0];

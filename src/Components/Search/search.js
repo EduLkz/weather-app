@@ -1,25 +1,30 @@
 import React from 'react';
-import './search.scss'
+import './search.scss';
 
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AppContext } from '../../appContext';
 import { RequestLongLat } from '../../Services/api';
-import { WeatherContext } from '../../weatherContext';
 
 const Search = () => {
 
-    const [inputCity, setInputCity] = useState('');
-    const { setWeatherData } = useContext(WeatherContext);
 
+    const [inputCity, setInputCity] = useState('');
+    const { setWeatherData, setHasError, setErrorMessage } = useContext(AppContext);
 
     async function getInfo() {
         if(inputCity.length <= 0){
+            setHasError(true);
+            setErrorMessage('Input cannot be empty');
             return;
         }
         
         const response = await RequestLongLat(inputCity);
 
-        setWeatherData(response);
+        if(response !== null){
+            setWeatherData(response);
+        }else{
+            setErrorMessage('Couldn\'t get the information because an internal error');
+        }
     }
 
     return (

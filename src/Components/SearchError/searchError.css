@@ -1,0 +1,36 @@
+.error{
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    padding: 25px 50px;
+    border: 5px red solid;
+    border-radius: 5px;
+    background-color: #dd7878;
+
+    z-index: 100;
+}
+
+.error-title{
+    font-weight: bolder;
+    margin: 15px;
+}
+
+
+.error p{
+    margin: 15px;
+}
+
+.error button{
+    border: none;
+    padding: 5px 25px;
+}
+
+.error button:hover{
+    padding: 5px 25px;
+    background-color: red;
+}
+
+.error button:active{
+    padding: 5px 25px;
+    background-color: darkred;
+}
